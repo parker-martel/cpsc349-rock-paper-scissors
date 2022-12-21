@@ -144,4 +144,15 @@ function generateResults(){
   localStorage.clear();
 });
 
+// Light and dark mode toggle
+let checkbox = document.querySelector('.light-dark-mode');
+let html = document.querySelector('html');
+checkbox.addEventListener('change', () => {
+  if (checkbox.checked) {
+    html.setAttribute('data-theme', 'dark');
+  } else {
+    html.setAttribute('data-theme', 'dracula');
+  }
+});
+
 
