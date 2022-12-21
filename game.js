@@ -125,16 +125,20 @@ function generateResults(){
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
 
-  // Reset the game
-  const reset = document.querySelector("#resetButton");
-  reset.textContent = "Reset";
-  reset.addEventListener("click", function() {
-  gamesPlayed = userScore = cpuScore = 0;
-  roundNumber.textContent = 1;
-  userText.textContent = 0;
-  cpuText.textContent = 0;
-  localStorage.clear();
-});
+ 
 }
+
+ // Reset the game
+ const reset = document.querySelector("#resetButton");
+ reset.addEventListener("click", function() {
+ gamesPlayed = userScore = cpuScore = 0;
+ roundNumber.textContent = 1;
+ userText.textContent = 0;
+ cpuText.textContent = 0;
+ userPlayed.textContent = "";
+ cpuPlayed.textContent = "";
+ results.textContent = "";
+ localStorage.clear();
+});
 
 
