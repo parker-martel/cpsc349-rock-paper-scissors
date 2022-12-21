@@ -2,7 +2,6 @@ const userText = document.querySelector("#userText"); //Score
 const cpuText = document.querySelector("#cpuText"); //Score
 const playButtons = document.querySelectorAll(".chooser");
 
-const dDoc = document.querySelector("main")
 const endBody = document.querySelector("body")
 
 
@@ -30,6 +29,7 @@ if (localStorage.getItem("GAMEstate") == null){
 }
 
 // Initialize round number to 1 and user scores to 0
+const instructions = document.querySelector("#instructions")
 const roundNumber = document.querySelector("#roundNumber")
 if (gamesPlayed == 1){
   roundNumber.textContent = 1
@@ -37,10 +37,11 @@ if (gamesPlayed == 1){
   cpuText.textContent = 0;
 
 } else {
-  roundNumber.textContent = gamesPlayed
+  roundNumber.textContent = gamesPlayed;
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
 }
+
 
 
 
@@ -81,7 +82,7 @@ function generateResults(){
 
 
   const totalText = document.createElement("h5")
-  totalText.textContent = gamesPlayed;
+  totalText.textContent = `Round: ${gamesPlayed}`;
   gameState.appendChild(totalText);
   gamesPlayed++;
 
@@ -96,7 +97,7 @@ function generateResults(){
   const cpuR = document.createElement("h5")
   cpuR.textContent = `CPU Played: ${cpuPLAY}`;
   gameState.appendChild(cpuR);
-  dDoc.appendChild(gameState);
+
 
 
   // Text under RPS images that tell user what they picked and what the cpu picked
@@ -124,7 +125,16 @@ function generateResults(){
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
 
-
-
-
+  // Reset the game
+  const reset = document.querySelector("#resetButton");
+  reset.textContent = "Reset";
+  reset.addEventListener("click", function() {
+  gamesPlayed = userScore = cpuScore = 0;
+  roundNumber.textContent = 1;
+  userText.textContent = 0;
+  cpuText.textContent = 0;
+  localStorage.clear();
+});
 }
+
+
