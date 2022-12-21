@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/dist/output.css">
 </head>
 
-<body class="px-6 pb-16 md:px-24 xl:px-52">
+<body class="px-3 pb-16 md:px-24 xl:px-52">
   <!-- Round and score counters in top left corner -->
   <section class="flex justify-between">
     <h1></h1>
@@ -38,10 +38,10 @@
   </section>
 
   <!-- Rock paper scissors images -->
-  <section id= "gamePlay" class="flex justify-center items-center my-12 p-1 space-x-24 px-5 py-5">
-    <button class="chooser" id="Rock"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg shadow-black" src="assets/images/Rock.png"/></button>
-    <button class="chooser" id="Paper"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg shadow-black" src="assets/images/Paper.png"/></button>
-    <button class="chooser" id="Scissors"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg shadow-black" src="assets/images/Scissors.png"/></button>
+  <section id= "gamePlay" class="flex flex-col items-center space-y-6 md:flex-row md:justify-around md:space-y-0 my-10 p-1 px-5 py-5">
+    <button class="chooser" id="Rock"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg" src="assets/images/Rock.png"/></button>
+    <button class="chooser" id="Paper"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg" src="assets/images/Paper.png"/></button>
+    <button class="chooser" id="Scissors"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg" src="assets/images/Scissors.png"/></button>
   </section>
 
   <!-- 'You played' and 'CPU played' text -->

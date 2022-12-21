@@ -149,7 +149,7 @@ let checkbox = document.querySelector('.light-dark-mode');
 let html = document.querySelector('html');
 checkbox.addEventListener('change', () => {
   if (checkbox.checked) {
-    html.setAttribute('data-theme', 'dark');
+    html.setAttribute('data-theme', 'lemonade');
   } else {
     html.setAttribute('data-theme', 'dracula');
   }
