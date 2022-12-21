@@ -101,13 +101,14 @@ function generateResults(){
 
 
   // Text under RPS images that tell user what they picked and what the cpu picked
-  const userPlayed = document.querySelector("#userPick")
-  const cpuPlayed = document.querySelector("#cpuPick")
+  const userPlayed = document.querySelector("#userPick");
+  const cpuPlayed = document.querySelector("#cpuPick");
   userPlayed.textContent = `You Played: ${userPLAY}`;
   cpuPlayed.textContent = `CPU Played: ${cpuPLAY}`;
 
   // Determine who won, and increment score counters
-  const results = document.querySelector("#results")
+  const results = document.querySelector("#results");
+  results.classList.add("text-secondary");
   if (userPLAY === "Rock" && cpuPLAY == "Scissors" || userPLAY === "Scissors" && cpuPLAY == "Paper" || userPLAY === "Paper" && cpuPLAY == "Rock"){
     resultText = "You win!";
     userScore++;
