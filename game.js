@@ -128,17 +128,20 @@ function generateResults(){
  
 }
 
- // Reset the game
+ // Reset the game, and all the counters
+ // Call localStorage.clear();
  const reset = document.querySelector("#resetButton");
  reset.addEventListener("click", function() {
- gamesPlayed = userScore = cpuScore = 0;
- roundNumber.textContent = 1;
- userText.textContent = 0;
- cpuText.textContent = 0;
- userPlayed.textContent = "";
- cpuPlayed.textContent = "";
- results.textContent = "";
- localStorage.clear();
+  const userPlayed = document.querySelector("#userPick");
+  const cpuPlayed = document.querySelector("#cpuPick");
+  gamesPlayed = userScore = cpuScore = 0;
+  roundNumber.textContent = 1;
+  userText.textContent = 0;
+  cpuText.textContent = 0;
+  userPlayed.innerHTML = "&nbsp;"
+  cpuPlayed.innerHTML = "&nbsp;"
+  results.innerHTML = "&nbsp;"
+  localStorage.clear();
 });
 
 
