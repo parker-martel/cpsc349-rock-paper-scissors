@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="dracula" lang="en">
+<html data-theme="halloween" lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="/dist/output.css">
 </head>
 
-<body class="pb-16">
-  <!-- Round and score counters in top left corner -->
-  <section class="flex justify-around">
+<body class="pb-16 from-primary to-secondary bg-gradient-to-tr text-primary-content">
+  <!-- Nav bar on top with title and light/dark mode toggle button -->
+  <section class="flex justify-around p-6">
     <h1></h1>
-    <h1 class="titleTEXT1 p-6 text-center text-4xl font-bold">Rock, Paper, Scissors</h1>
+    <h1 class="titleTEXT1 text-center text-4xl font-bold">Rock, Paper, Scissors</h1>
+    <!-- light/dark mode button -->
     <label class="swap swap-rotate">
-  
       <!-- this hidden checkbox controls the state -->
       <input class="light-dark-mode" type="checkbox" />
       
@@ -23,12 +23,10 @@
       
       <!-- moon icon -->
       <svg class="swap-off fill-current w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
-      
     </label>
-
   </section>
   
-  
+  <!-- Round number & User/Cpu scores -->
   <section class="flex justify-center">
   <div id= "gameTitle" class="flex flex-col items-start space-y-1 py-4">
     <h3 class="text-xl font-semibold">Round <span id="roundNumber" class="text-primary"></span></h3>
@@ -37,7 +35,7 @@
   </div> 
   </section>
 
-  <!-- Rock paper scissors images -->
+  <!-- Rock paper scissors clickable images -->
   <section id= "gamePlay" class="flex flex-col items-center space-y-6 md:flex-row md:justify-around md:space-y-0 my-10 p-1 px-5 py-5">
     <button class="chooser" id="Rock"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg" src="assets/images/Rock.png"/></button>
     <button class="chooser" id="Paper"><img class="scale-90 hover:scale-95 transition-transform duration-200 rounded-full shadow-lg" src="assets/images/Paper.png"/></button>
@@ -48,11 +46,23 @@
   <section id= "picks" class="flex flex-col items-center space-y-6">
     <h3 class="text-xl" id="userPick">&nbsp</h3>
     <h3 class="text-xl" id="cpuPick">&nbsp</h3>
-      <!-- Game result text -->
+      <!-- round result text -->
     <h3 class="text-xl" id="results">&nbsp</h3>
-    <!-- <button id="resetButton" class="bg-yellow-300 text-black mx-auto text-md py-2 px-6 hover:bg-blue-500 transition-color duration-200 rounded-full">Reset</button> -->
-    <button id="resetButton" class="btn btn-primary rounded-full outline outline-offset-2 outline-2 outline-secondary">Reset</button>
+    <!-- reset button -->
+    <button id="resetButton" class="btn rounded-full outline outline-offset-2 outline-2 outline-primary-content">Reset</button>
   </section>
+
+  <!-- Put this part before </body> tag -->
+  <!-- modal-open	-	Add/remove this class to open/close the modal using JS -->
+  <!-- Winner alert box -->
+  <div id="alert-box" class="modal">
+    <div class="bg-base-100 px-20 py-8 rounded-2xl">
+      <h3 id="winner-text" class="font-bold text-lg text-center text-primary"></h3>
+      <div class="modal-action flex justify-center">
+        <label type="checkbox" id="my-modal" class="btn">Play Again!</label>
+      </div>
+    </div>
+  </div>
   <script type="module" src="game.js"></script>
 </body>
 

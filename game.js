@@ -1,9 +1,6 @@
 const userText = document.querySelector("#userText"); //Score
 const cpuText = document.querySelector("#cpuText"); //Score
-const playButtons = document.querySelectorAll(".chooser");
-
-const endBody = document.querySelector("body")
-
+const playButtons = document.querySelectorAll(".chooser"); // Rock paper scissors buttons
 
 let userPLAY;
 let cpuPLAY;
@@ -12,6 +9,7 @@ let gamesPlayed;
 let userScore;
 let cpuScore;
 
+// Save game state so page refresh keeps scores
 if (localStorage.getItem("GAMEstate") == null){
   localStorage.clear();
   gamesPlayed = 1;
@@ -41,9 +39,6 @@ if (gamesPlayed == 1){
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
 }
-
-
-
 
 // Upon clicking the rock paper scissors images
 playButtons.forEach(button => button.addEventListener("click", () => {
@@ -79,17 +74,12 @@ function cpuTurn(){
 // Generate the game results
 function generateResults(){
   const gameState = document.createElement("article")
-
-
-  const totalText = document.createElement("h5")
-  totalText.textContent = `Round: ${gamesPlayed}`;
-  gameState.appendChild(totalText);
   gamesPlayed++;
 
-  // Set the round number in top left corner to the number of games played
+  // Set the round number on top of page to the number of games played
   roundNumber.textContent = gamesPlayed;
 
-  // Current score counter in top left
+  // Current score counter in top of page
   const userR = document.createElement("h5")
   userR.textContent = `User Played: ${userPLAY}`;
   gameState.appendChild(userR);
@@ -97,8 +87,6 @@ function generateResults(){
   const cpuR = document.createElement("h5")
   cpuR.textContent = `CPU Played: ${cpuPLAY}`;
   gameState.appendChild(cpuR);
-
-
 
   // Text under RPS images that tell user what they picked and what the cpu picked
   const userPlayed = document.querySelector("#userPick");
@@ -108,7 +96,6 @@ function generateResults(){
 
   // Determine who won, and increment score counters
   const results = document.querySelector("#results");
-  results.classList.add("text-secondary");
   if (userPLAY === "Rock" && cpuPLAY == "Scissors" || userPLAY === "Scissors" && cpuPLAY == "Paper" || userPLAY === "Paper" && cpuPLAY == "Rock"){
     resultText = "You win!";
     userScore++;
@@ -126,33 +113,61 @@ function generateResults(){
   userText.textContent = userScore;
   cpuText.textContent = cpuScore;
 
+  // Game end
+  if (cpuScore == 5 || userScore == 5){
+    userPlayed.innerHTML = "&nbsp;";
+    cpuPlayed.innerHTML = "&nbsp;";
+    results.innerHTML = "&nbsp;";
+
+    let alertBox = document.querySelector('#alert-box');
+    let winnerText = document.querySelector('#winner-text');
+
+    // Set correct text in alert box
+    if (cpuScore == 5){
+      winnerText.textContent = "You Lose!";
+    } else {
+      winnerText.textContent = "You Win!";
+    }
+    // Open alert box
+    alertBox.classList.add("modal-open");
+
+    // Reset game and close alert box
+    let alertReset = document.querySelector('#my-modal');
+    alertReset.addEventListener("click", () => {
+      alertBox.classList.remove("modal-open");
+      resetGame();
+    })
+
+  }
+
  
 }
 
  // Reset the game, and all the counters
  // Call localStorage.clear();
  const reset = document.querySelector("#resetButton");
- reset.addEventListener("click", function() {
+ reset.addEventListener("click", resetGame);
+function resetGame(){
   const userPlayed = document.querySelector("#userPick");
   const cpuPlayed = document.querySelector("#cpuPick");
   gamesPlayed = userScore = cpuScore = 0;
   roundNumber.textContent = 1;
   userText.textContent = 0;
   cpuText.textContent = 0;
-  userPlayed.innerHTML = "&nbsp;"
-  cpuPlayed.innerHTML = "&nbsp;"
-  results.innerHTML = "&nbsp;"
+  userPlayed.innerHTML = "&nbsp;";
+  cpuPlayed.innerHTML = "&nbsp;";
+  results.innerHTML = "&nbsp;";
   localStorage.clear();
-});
+}
 
 // Light and dark mode toggle
 let checkbox = document.querySelector('.light-dark-mode');
 let html = document.querySelector('html');
 checkbox.addEventListener('change', () => {
   if (checkbox.checked) {
-    html.setAttribute('data-theme', 'lemonade');
+    html.setAttribute('data-theme', 'synthwave');
   } else {
-    html.setAttribute('data-theme', 'dracula');
+    html.setAttribute('data-theme', 'halloween');
   }
 });
 
